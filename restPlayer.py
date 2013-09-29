@@ -29,8 +29,8 @@ class restPlayer:
             cherrypy.log(str(ret))
             
             j = 0
-            for i in ret:
-                ret[int(i)][j] = os.listdir(params["chemin"])
+            for i in range(0,len(ret)):
+                ret[i][j] = os.listdir(params["chemin"])
                 j += 1
         else:
             ret = {"OK" : False}
