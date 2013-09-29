@@ -32,12 +32,11 @@ class restPlayer:
             
             for i in range(0,len(mainDir)):
                 subDir.insert(i, os.listdir(params["chemin"] + '/' + mainDir[i]))
-            cherrypy.log("len de subDir")
-            cherrypy.log(str(len(subDir)))
+            
             for j in range(0,len(mainDir)):
                 subSubDir.insert(j,[])
                 for jj in range(0,len(subDir)):
-                    subSubDir[j].insert(jj, os.listdir(params["chemin"] + '/' + mainDir[j] + '/' + subDir[jj]))
+                    subSubDir[j].insert(jj, os.listdir(params["chemin"] + '/' + mainDir[j] + '/' + subDir[j][jj]))
             
             ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir, "sousSousDossier" : subSubDir}
         else:
