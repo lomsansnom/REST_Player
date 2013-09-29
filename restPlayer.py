@@ -36,7 +36,9 @@ class restPlayer:
             for j in range(0,len(mainDir)):
                 subSubDir.insert(j,[])
                 for jj in range(0,len(subDir)):
-                    subSubDir[j].insert(jj, os.listdir(params["chemin"] + '/' + mainDir[j] + '/' + subDir[j][jj]))
+                    chemin = params["chemin"] + '/' + mainDir[j] + '/' + subDir[j][jj]
+                    if os.path.isdir(chemin):
+                        subSubDir[j].insert(jj, os.listdir(chemin))
             
             ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir, "sousSousDossier" : subSubDir}
         else:
