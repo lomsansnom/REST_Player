@@ -32,6 +32,7 @@ class restPlayer:
             
             for i in range(0,len(mainDir)):
                 subDir.insert(i, os.listdir(params["chemin"] + '/' + mainDir[i]))
+            cherrypy.log("len de subDir")
             cherrypy.log(len(subDir))
             for j in range(0,len(mainDir)):
                 subSubDir.insert(j,[])
