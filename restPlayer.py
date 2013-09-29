@@ -32,7 +32,12 @@ class restPlayer:
             for i in range(0,len(mainDir)):
                 subDir.insert(i, os.listdir(params["chemin"] + '/' + mainDir[i]))
             cherrypy.log(str(subDir))
-            ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir}
+            
+            for i in range(0,len(subDir)):
+                subSubDir.insert(i, os.listdir(params["chemin"] + '/' + subDir[i]))
+            cherrypy.log(str(subSubDir))
+            
+            ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir, "sousSousDossier" : subSubDir}
         else:
             ret = {"OK" : False}
             ret["Erreur"] = "chemin est obligatoire"
