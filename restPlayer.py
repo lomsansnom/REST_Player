@@ -27,6 +27,11 @@ class restPlayer:
             cherrypy.log(params["chemin"])
             ret = os.listdir(params["chemin"])
             cherrypy.log(str(ret))
+            
+            j = 0
+            for i in ret:
+                ret[i][j] = os.listdir(params["chemin"])
+                j += 1
         else:
             ret = {"OK" : False}
             ret["Erreur"] = "chemin est obligatoire"
