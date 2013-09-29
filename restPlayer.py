@@ -27,7 +27,7 @@ class restPlayer:
             cherrypy.log(params["chemin"])
             ret = os.listdir(params["chemin"])
             cherrypy.log(str(ret))
-            
+            ret = list(ret)
             j = 0
             for i in range(0,len(ret)):
                 ret[i][j] = os.listdir(params["chemin"])
