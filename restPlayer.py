@@ -35,7 +35,7 @@ class restPlayer:
             
             for j in range(0,len(mainDir)-1):
                 subSubDir.insert(j,[])
-                for jj in range(0,len(subDir)-1):
+                for jj in range(0,len(subDir[j])-1):
                     chemin = params["chemin"] + '/' + mainDir[j] + '/' + subDir[j][jj]
                     if os.path.isdir(chemin):
                         subSubDir[j].insert(jj, os.listdir(chemin))
