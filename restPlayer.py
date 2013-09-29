@@ -30,7 +30,7 @@ class restPlayer:
             
             j = 0
             for i in ret:
-                ret[i][j] = os.listdir(params["chemin"])
+                ret[str(i)][j] = os.listdir(params["chemin"])
                 j += 1
         else:
             ret = {"OK" : False}
