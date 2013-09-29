@@ -43,7 +43,7 @@ class restPlayer:
                     if os.path.isdir(chemin):
                         subSubDir[j].insert(jj, os.listdir(chemin))
                     elif chemin[len(chemin)-4:] != ".mp3":
-                        subSubDir[j][jj] = ""
+                        subDir[j][jj] = ""
             
             ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir, "sousSousDossier" : subSubDir}
         else:
