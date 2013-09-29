@@ -34,6 +34,8 @@ class restPlayer:
                 chemin = params["chemin"] + '/' + mainDir[i]
                 if os.path.isdir(chemin):
                     subDir.insert(i, os.listdir(chemin))
+                elif chemin[len(chemin)-4:] != ".mp3":
+                        mainDir[j][jj] = ""
             
             
             for j in range(0,len(mainDir)-1):
@@ -44,6 +46,13 @@ class restPlayer:
                         subSubDir[j].insert(jj, os.listdir(chemin))
                     elif chemin[len(chemin)-4:] != ".mp3":
                         subDir[j][jj] = ""
+
+            for k in range(0,len(mainDir)-1):
+                for kk in range(0,len(subDir[k])-1):
+                    for kkk in range(0,len(subSubDir[k][kk])-1):
+                        chemin = params["chemin"] + '/' + mainDir[k] + '/' + subSubDir[k][kk] + '/' + subSubDir[k][kk][kkk]
+                        if chemin[len(chemin)-4:] != ".mp3":
+                            subSubDir[k][kk][kkk] = ""
             
             ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir, "sousSousDossier" : subSubDir}
         else:
