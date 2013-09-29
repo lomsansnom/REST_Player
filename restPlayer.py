@@ -25,13 +25,13 @@ class restPlayer:
         
         if "chemin" in params:
             cherrypy.log(params["chemin"])
-            ret = os.listdir(params["chemin"])
-            cherrypy.log(str(ret))
-            ret = list(ret)
-            j = 0
-            for i in range(0,len(ret)):
-                ret[i][j] = os.listdir(params["chemin"])
-                j += 1
+            mainDir = os.listdir(params["chemin"])
+            cherrypy.log(str(mainDir))
+
+            for i in range(0,len(mainDir)):
+                subDir = os.listdir(mainDir[i])
+            cherrypy.log(str(subDir))
+            ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir}
         else:
             ret = {"OK" : False}
             ret["Erreur"] = "chemin est obligatoire"
