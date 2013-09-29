@@ -27,7 +27,7 @@ class restPlayer:
             cherrypy.log(params["chemin"])
             mainDir = os.listdir(params["chemin"])
             cherrypy.log(str(mainDir))
-            subDir = []
+            subDir = ()
             
             for i in range(0,len(mainDir)):
                 subDir[i] = os.listdir(params["chemin"] + '/' + mainDir[i])
