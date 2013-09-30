@@ -70,7 +70,7 @@ class restPlayer:
 conf={  
         'global':{
                   'server.socket_host' : '0.0.0.0',
-                  'server.socket_port' : 8282,
+                  'server.socket_port' : 9090,
                   'log.screen' : True
         },
         '/' : {
