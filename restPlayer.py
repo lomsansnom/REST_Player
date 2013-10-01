@@ -68,7 +68,7 @@ class restPlayer:
         
         return json.dumps(ret)
     
-    @cherrypy.expose
+    @expose
     def getMusique(self):
         try:
             params = json.loads(cherrypy.request.body.readline())
