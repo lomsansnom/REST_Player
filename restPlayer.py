@@ -100,6 +100,7 @@ class restPlayer:
                     data = f.read(BUF_SIZE)
     
             return stream()
+        return json.dumps({"OK":True})
     getMusique._cp_config = {'response.stream': True}
 
         
