@@ -57,7 +57,7 @@ class restPlayer:
                 for kk in range(0,len(subDir[k])-1):
                     for kkk in range(0,len(subSubDir[k][kk])-1):
                         chemin = params["chemin"] + '/' + mainDir[k] + '/' + subDir[k][kk] + '/' + subSubDir[k][kk][kkk]
-                        if chemin[len(chemin)-4:] != ".mp3":
+                        if subSubDir[k][kk][kkk][len(subSubDir[k][kk][kkk])-4:] != ".mp3":
                             subSubDir[k][kk][kkk] = ""
             
             ret = {"OK" : True, "parent" : mainDir, "sousDossier" : subDir, "sousSousDossier" : subSubDir}
