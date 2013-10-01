@@ -77,7 +77,7 @@ class restPlayer:
             ret['Erreur'] = "Paramètres invalides"
             cherrypy.log(str(e))
             return json.dumps(ret)
-        
+        params={"musique" : "/home/alex/saveWindows/Musique/zaz-zaz/01-Les passants.mp3"}
         if "musique" in params:
             if params["musique"] == None:
                 return "no file specified!"
@@ -99,10 +99,8 @@ class restPlayer:
                     yield data
                     data = f.read(BUF_SIZE)
     
-            stream()
-        return json.dumps({"ok":True})
+            return stream()
     getMusique._cp_config = {'response.stream': True}
-
         
 conf={  
         'global':{
