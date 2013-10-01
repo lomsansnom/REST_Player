@@ -30,7 +30,7 @@ class restPlayer:
             subDir = []
             subSubDir =[]            
             
-            for i in range(0,len(mainDir)-1):
+            for i in range(0,len(mainDir)):
                 chemin = params["chemin"] + '/' + mainDir[i]
                 if os.path.isdir(chemin):
                     subDir.insert(i, os.listdir(chemin))
@@ -41,9 +41,9 @@ class restPlayer:
                     subDir.insert(i, "")
             
             
-            for j in range(0,len(mainDir)-1):
+            for j in range(0,len(mainDir)):
                 subSubDir.insert(j,[])
-                for jj in range(0,len(subDir[j])-1):
+                for jj in range(0,len(subDir[j])):
                     chemin = params["chemin"] + '/' + mainDir[j] + '/' + subDir[j][jj]
                     if os.path.isdir(chemin):
                         subSubDir[j].insert(jj, os.listdir(chemin))
@@ -53,9 +53,9 @@ class restPlayer:
                     if not os.path.isdir(chemin):
                         subSubDir[j].insert(jj, "")
                         
-            for k in range(0,len(mainDir)-1):
-                for kk in range(0,len(subDir[k])-1):
-                    for kkk in range(0,len(subSubDir[k][kk])-1):
+            for k in range(0,len(mainDir)):
+                for kk in range(0,len(subDir[k])):
+                    for kkk in range(0,len(subSubDir[k][kk])):
                         chemin = params["chemin"] + '/' + mainDir[k] + '/' + subDir[k][kk] + '/' + subSubDir[k][kk][kkk]
                         if subSubDir[k][kk][kkk][len(subSubDir[k][kk][kkk])-4:] != ".mp3":
                             subSubDir[k][kk][kkk] = ""
