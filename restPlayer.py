@@ -78,6 +78,28 @@ class restPlayer:
             cherrypy.log(str(e))
             return json.dumps(ret)
         
+        if "musique" in params:
+            if params["musique"] == None:
+                return "no file specified!"
+            if not os.path.exists(params["musique"]):
+                return "file not found!"
+            f = open(params["musique"], 'rb')
+            size = os.path.getsize(params["musique"])
+            mime = mimetypes.guess_type(params["musique"])[0]
+            cherrypy.log(mime)
+            cherrypy.response.headers["Content-Type"] = mime
+            cherrypy.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % os.path.basename(params["musique"])
+            cherrypy.response.headers["Content-Length"] = size
+        
+            BUF_SIZE = 1024 * 5
+    
+            def stream():
+                data = f.read(BUF_SIZE)
+                while len(data) > 0:
+                    yield data
+                    data = f.read(BUF_SIZE)
+    
+            stream()
         return json.dumps({"ok":True})
     getMusique._cp_config = {'response.stream': True}
 
