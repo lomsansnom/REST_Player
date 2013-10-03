@@ -69,26 +69,19 @@ class restPlayer:
         return json.dumps(ret)
     
     @expose
-    def getMusique(self):
-        try:
-            params = json.loads(cherrypy.request.body.readline())
-        except Exception as e:
-            ret = {"OK" : False}
-            ret['Erreur'] = "Paramètres invalides"
-            cherrypy.log(str(e))
-            return json.dumps(ret)
-        params={"musique" : "/home/alex/saveWindows/Musique/zaz-zaz/01-Les passants.mp3"}
-        if "musique" in params:
-            if params["musique"] == None:
+    def getMusique(self, musique):
+        cherrypy.log(musique)
+        if musique:
+            if musique == None:
                 return "no file specified!"
-            if not os.path.exists(params["musique"]):
+            if not os.path.exists(musique):
                 return "file not found!"
-            f = open(params["musique"], 'rb')
-            size = os.path.getsize(params["musique"])
-            mime = mimetypes.guess_type(params["musique"])[0]
+            f = open(musique, 'rb')
+            size = os.path.getsize(musique)
+            mime = mimetypes.guess_type(musique)[0]
             cherrypy.log(mime)
             cherrypy.response.headers["Content-Type"] = mime
-            cherrypy.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % os.path.basename(params["musique"])
+            cherrypy.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % os.path.basename(musique)
             cherrypy.response.headers["Content-Length"] = size
         
             BUF_SIZE = 1024 * 5
