@@ -6,6 +6,7 @@ from cherrypy import expose
 import json
 import os
 import mimetypes
+import pygame
 
 class restPlayer:
     
@@ -68,6 +69,13 @@ class restPlayer:
         
         return json.dumps(ret)
     
+    @expose
+    def testMusique(self):
+        cherrypy.log("lecture de 103-onerepublic-secrets.mp3")
+        pygame.mixer.init()
+        pygame.mixer.music.load("/home/pi/Player/" + 103-onerepublic-secrets.mp3)
+        pygame.mixer.music.play()
+        
     @expose
     def getMusique(self, musique):
         cherrypy.log(musique)
