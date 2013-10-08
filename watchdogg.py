@@ -19,7 +19,7 @@ class MyEventHandler(FileSystemEventHandler):
         if len(os.listdir('/home/pi/Player')) == 1:
             if event.src_path[len(event.src_path)-4:] == ".mp3":
                 try:
-                    print "Load musique"
+                    print "Load musique : " + event.src_path
                     pygame.mixer.music.load(event.src_path)
                     print "play musique"
                     pygame.mixer.music.play()
