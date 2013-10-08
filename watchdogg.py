@@ -18,7 +18,6 @@ class MyEventHandler(FileSystemEventHandler):
         print "path=", event.src_path
         if len(os.listdir('/home/pi/Player')) == 1:
             if event.src_path[len(event.src_path)-4:] == ".mp3":
-                pygame.mixer.init()
                 pygame.mixer.music.load(event.src_path)
                 pygame.mixer.music.play()
             else:
@@ -27,6 +26,7 @@ class MyEventHandler(FileSystemEventHandler):
             print "Plusieurs fichiers présent dans le dossier"
 
 def main():    
+    pygame.mixer.init()
     observer = Observer()
     event_handler = MyEventHandler(observer)
 
